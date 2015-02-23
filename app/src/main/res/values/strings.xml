@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Полезные советы</string>
+    <string name="action_settings">Настройки</string>
+    <string name="title_activity_display_content">Совет</string>
+    <string name="title_activity_settings_activity">Настройки</string>
+    <string name="title_group">Раздел</string>
+    <string name="fontsSizeCategory">Размер шрифта</string>
+    <string name="fontsSizeTitle">Размер текста</string>
+    <string name="selectItemArraySummary">Выберите размер шрифта из списка</string>
+    <string name="defaultFontsSize">NORMAL</string>
+    <string name="title_activity_preference">Настройки</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

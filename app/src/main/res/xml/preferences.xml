@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/fontsSizeCategory" >
+
+        <ListPreference
+            android:key="fontsSize"
+            android:defaultValue="@string/defaultFontsSize"
+            android:entries="@array/fontsSizeTitle"
+            android:entryValues="@array/fontsSizeValue"
+            android:summary="@string/selectItemArraySummary"
+            android:title="@string/fontsSizeTitle" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

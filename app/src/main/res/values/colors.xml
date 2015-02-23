@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="actionBarBackround">#669900</color>
+    <color name="mainRecordColor">#000000</color>
+    <color name="mainGroupColor">#000000</color>
+    <color name="mainActivityBackgroundColor">#ffffffff</color>
+</resources>
