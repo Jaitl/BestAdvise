@@ -51,6 +51,7 @@ public class BaseAdActivity extends ActionBarActivity {
     @Override
     protected void onDestroy() {
         if(mAdView != null) {
+            mAdView.removeAllViews();
             mAdView.destroy();
         }
 

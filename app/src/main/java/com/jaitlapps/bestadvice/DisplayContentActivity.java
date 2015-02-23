@@ -1,5 +1,6 @@
 package com.jaitlapps.bestadvice;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 import com.jaitlapps.bestadvice.domain.RecordEntry;
 
@@ -17,13 +21,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
-
 public class DisplayContentActivity extends BaseAdActivity {
+
+    private Tracker analyticsTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_content);
+        loadTracker();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -45,6 +51,9 @@ public class DisplayContentActivity extends BaseAdActivity {
         String encoding = "utf-8";
 
         web.loadDataWithBaseURL(null, html, mime, encoding, null);
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+
+        saveStatistic(recordEntry);
 
         if (recordEntry.getTitle() != null && recordEntry.getTitle().length() > 0) {
             actionBar.setTitle(recordEntry.getTitle());
@@ -110,5 +119,25 @@ public class DisplayContentActivity extends BaseAdActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadTracker() {
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        analyticsTracker = analytics.newTracker(R.xml.global_tracker);
+    }
+
+    private String getRecordDataJson(RecordEntry recordEntry) {
+        return String.format("{\"groupId\": \"%s\", \"recordId\": \"%s\"}", recordEntry.getGroupId(), recordEntry.getId());
+    }
+
+    private void saveStatistic(RecordEntry recordEntry) {
+        analyticsTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("display-content").setAction(getRecordDataJson(recordEntry)).build());
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 }

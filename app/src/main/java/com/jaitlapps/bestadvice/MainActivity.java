@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 import com.jaitlapps.bestadvice.adapter.GroupMenuAdapter;
 import com.jaitlapps.bestadvice.domain.GroupEntry;
 import com.jaitlapps.bestadvice.loader.MainMenuLoader;
@@ -29,6 +31,7 @@ public class MainActivity extends BaseAdActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        enablingAdvertisingFeatures();
 
         MainMenuLoader mainMenuLoader = new MainMenuLoader(this);
 
@@ -55,5 +58,11 @@ public class MainActivity extends BaseAdActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void enablingAdvertisingFeatures() {
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker analyticsTracker = analytics.newTracker(R.xml.global_tracker);
+        analyticsTracker.enableAdvertisingIdCollection(true);
     }
 }

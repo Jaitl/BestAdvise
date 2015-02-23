@@ -1,6 +1,7 @@
 package com.jaitlapps.bestadvice;
 
 import com.jaitlapps.bestadvice.domain.RecordEntry;
+
 import org.markdown4j.Markdown4jProcessor;
 
 import java.io.IOException;
