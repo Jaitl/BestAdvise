@@ -1,4 +1,4 @@
-package com.jaitlapps.bestadvice;
+package com.jaitlapps.bestadvice.activity;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.jaitlapps.bestadvice.R;
 
 public class BaseAdActivity extends ActionBarActivity {
 
@@ -56,6 +58,18 @@ public class BaseAdActivity extends ActionBarActivity {
         }
 
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
     protected boolean isNetworkConnected() {

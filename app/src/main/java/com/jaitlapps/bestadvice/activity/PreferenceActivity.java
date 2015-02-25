@@ -1,4 +1,4 @@
-package com.jaitlapps.bestadvice;
+package com.jaitlapps.bestadvice.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.fragment.PreferenceFragment;
 
 

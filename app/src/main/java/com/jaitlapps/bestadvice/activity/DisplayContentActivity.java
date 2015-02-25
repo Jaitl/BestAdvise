@@ -1,6 +1,5 @@
-package com.jaitlapps.bestadvice;
+package com.jaitlapps.bestadvice.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +14,8 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
+import com.jaitlapps.bestadvice.ContentRender;
+import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.domain.RecordEntry;
 
 import java.io.IOException;
@@ -23,13 +24,10 @@ import java.io.UnsupportedEncodingException;
 
 public class DisplayContentActivity extends BaseAdActivity {
 
-    private Tracker analyticsTracker;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_content);
-        loadTracker();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -51,7 +49,6 @@ public class DisplayContentActivity extends BaseAdActivity {
         String encoding = "utf-8";
 
         web.loadDataWithBaseURL(null, html, mime, encoding, null);
-        GoogleAnalytics.getInstance(this).reportActivityStart(this);
 
         saveStatistic(recordEntry);
 
@@ -121,23 +118,13 @@ public class DisplayContentActivity extends BaseAdActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadTracker() {
-        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-        analyticsTracker = analytics.newTracker(R.xml.global_tracker);
-    }
-
-    private String getRecordDataJson(RecordEntry recordEntry) {
-        return String.format("{\"groupId\": \"%s\", \"recordId\": \"%s\"}", recordEntry.getGroupId(), recordEntry.getId());
-    }
-
     private void saveStatistic(RecordEntry recordEntry) {
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker analyticsTracker = analytics.newTracker(R.xml.global_tracker);
+
         analyticsTracker.send(new HitBuilders.EventBuilder()
-                .setCategory("display-content").setAction(getRecordDataJson(recordEntry)).build());
+                .setCategory("display-article").setAction(recordEntry.getTitle()).build());
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        GoogleAnalytics.getInstance(this).reportActivityStop(this);
-    }
+
 }

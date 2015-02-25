@@ -1,4 +1,4 @@
-package com.jaitlapps.bestadvice;
+package com.jaitlapps.bestadvice.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,10 @@ import android.widget.ExpandableListView;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-import com.jaitlapps.bestadvice.adapter.GroupMenuAdapter;
+import com.jaitlapps.bestadvice.R;
+import com.jaitlapps.bestadvice.GroupMenuAdapter;
 import com.jaitlapps.bestadvice.domain.GroupEntry;
-import com.jaitlapps.bestadvice.loader.MainMenuLoader;
+import com.jaitlapps.bestadvice.MainMenuLoader;
 
 import java.util.List;
 

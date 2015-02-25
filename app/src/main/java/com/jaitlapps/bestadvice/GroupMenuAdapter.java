@@ -1,4 +1,4 @@
-package com.jaitlapps.bestadvice.adapter;
+package com.jaitlapps.bestadvice;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.jaitlapps.bestadvice.DisplayContentActivity;
-import com.jaitlapps.bestadvice.MainActivity;
+import com.jaitlapps.bestadvice.activity.DisplayContentActivity;
+import com.jaitlapps.bestadvice.activity.MainActivity;
 import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.domain.GroupEntry;
 import com.jaitlapps.bestadvice.domain.RecordEntry;

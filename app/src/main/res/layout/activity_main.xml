@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@color/mainActivityBackgroundColor"
     android:orientation="vertical"
-    tools:context="com.jaitlapps.bestadvice.MainActivity">
+    tools:context="com.jaitlapps.bestadvice.activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="fill_parent"

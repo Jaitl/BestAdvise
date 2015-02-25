@@ -1,6 +1,6 @@
-package com.jaitlapps.bestadvice.loader;
+package com.jaitlapps.bestadvice;
 
-import android.app.Activity;
+import android.content.res.AssetManager;
 
 import com.google.gson.Gson;
 import com.jaitlapps.bestadvice.domain.GroupEntry;
@@ -14,11 +14,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public class MainMenuLoader {
-    private Activity activity;
+    private AssetManager assetManager;
     private Gson gson = new Gson();
 
-    public MainMenuLoader(Activity activity) {
-        this.activity = activity;
+    public MainMenuLoader(AssetManager assetManager) {
+        this.assetManager = assetManager;
     }
 
     public List<GroupEntry> loadMainMenu() {
@@ -59,7 +59,7 @@ public class MainMenuLoader {
         String jsonRecords = null;
 
         try {
-            inputStream = activity.getAssets().open("bestadvice/data/" + name + ".json");
+            inputStream = assetManager.open("bestadvice/data/" + name + ".json");
             jsonBytes = new byte[inputStream.available()];
             inputStream.read(jsonBytes);
         } catch (IOException e) {
