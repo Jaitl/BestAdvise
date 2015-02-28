@@ -34,7 +34,7 @@ public class MainActivity extends BaseAdActivity {
         setContentView(R.layout.activity_main);
         enablingAdvertisingFeatures();
 
-        MainMenuLoader mainMenuLoader = new MainMenuLoader(this);
+        MainMenuLoader mainMenuLoader = new MainMenuLoader(getAssets());
 
 
         List<GroupEntry> groups = mainMenuLoader.loadMainMenu();
@@ -55,6 +55,7 @@ public class MainActivity extends BaseAdActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
             startActivity(new Intent(this, PreferenceActivity.class));
             return true;
         }
