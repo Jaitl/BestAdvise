@@ -12,5 +12,12 @@
     <string name="defaultFontsSize">NORMAL</string>
     <string name="title_activity_preference">Настройки</string>
     <string name="hello_world">Hello world!</string>
+    
+    <string name="category_name">Категории</string>
+    <string name="list_name">Список</string>
+    <string name="favorite_name">Избранное</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

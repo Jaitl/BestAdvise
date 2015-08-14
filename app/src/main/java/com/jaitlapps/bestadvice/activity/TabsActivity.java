@@ -2,21 +2,18 @@ package com.jaitlapps.bestadvice.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ExpandableListView;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.jaitlapps.bestadvice.R;
-import com.jaitlapps.bestadvice.GroupMenuAdapter;
-import com.jaitlapps.bestadvice.domain.GroupEntry;
-import com.jaitlapps.bestadvice.MainMenuLoader;
+import com.jaitlapps.bestadvice.adapter.TabsAdapter;
 
-import java.util.List;
-
-
-public class MainActivity extends BaseAdActivity {
+public class TabsActivity extends BaseAdActivity {
+    TabsAdapter tabsAdapter;
+    ViewPager mViewPager;
 
     public final static String JSON_RECORDENTRY = "com.jaitlapps.bestadvice.JSON_RECORDENTRY";
 
@@ -27,23 +24,17 @@ public class MainActivity extends BaseAdActivity {
         return true;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tabs);
         enablingAdvertisingFeatures();
 
-        MainMenuLoader mainMenuLoader = new MainMenuLoader(getAssets());
+        // ViewPager and its adapters use support library
+        // fragments, so use getSupportFragmentManager.
+        tabsAdapter = new TabsAdapter(getSupportFragmentManager(), this);
 
-
-        List<GroupEntry> groups = mainMenuLoader.loadMainMenu();
-
-        ExpandableListView listView = (ExpandableListView) findViewById(R.id.listView);
-
-        GroupMenuAdapter adapter = new GroupMenuAdapter(this, groups);
-
-        listView.setAdapter(adapter);
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(tabsAdapter);
 
         displayAd();
     }

@@ -36,7 +36,7 @@ public class DisplayContentActivity extends BaseAdActivity {
 
         WebView web = (WebView) findViewById(R.id.webview);
 
-        String jsonRecord = intent.getStringExtra(MainActivity.JSON_RECORDENTRY);
+        String jsonRecord = intent.getStringExtra(TabsActivity.JSON_RECORDENTRY);
         Gson gson = new Gson();
         RecordEntry recordEntry = gson.fromJson(jsonRecord, RecordEntry.class);
 
