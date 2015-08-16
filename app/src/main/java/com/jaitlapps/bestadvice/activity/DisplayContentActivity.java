@@ -114,7 +114,11 @@ public class DisplayContentActivity extends BaseAdActivity {
         if (id == R.id.action_settings) {
             startActivity(new Intent(this, PreferenceActivity.class));
             return true;
+        } else if(id == R.id.home) {
+            finish();
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 

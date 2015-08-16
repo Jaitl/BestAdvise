@@ -27,6 +27,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
         categoryFragment.setActivity(activity);
 
         ListFragment listFragment = new ListFragment();
+        listFragment.setActivity(activity);
 
         FavoriteFragment favoriteFragment = new FavoriteFragment();
 

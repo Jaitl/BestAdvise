@@ -6,11 +6,14 @@ import com.google.gson.Gson;
 import com.jaitlapps.bestadvice.domain.GroupEntry;
 import com.jaitlapps.bestadvice.domain.RecordEntry;
 import com.jaitlapps.bestadvice.domain.list.GroupListEntry;
+import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
 import com.jaitlapps.bestadvice.domain.list.RecordListEntry;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainMenuLoader {
@@ -21,7 +24,7 @@ public class MainMenuLoader {
         this.assetManager = assetManager;
     }
 
-    public List<GroupEntry> loadMainMenu() {
+    public List<GroupEntry> loadCategories() {
         List<GroupEntry> groupsList = loadGroups().getList();
         List<RecordEntry> recordsList = loadRecords().getList();
 
@@ -34,6 +37,26 @@ public class MainMenuLoader {
         }
 
         return groupsList;
+    }
+
+    public ListRecordGroup loadListRecords() {
+        List<GroupEntry> groupsList = loadGroups().getList();
+        List<RecordEntry> recordsList = loadRecords().getList();
+
+        Collections.reverse(recordsList);
+
+        ListRecordGroup listRecordGroup = new ListRecordGroup();
+        listRecordGroup.setRecordEntryList(recordsList);
+
+        HashMap<String, GroupEntry> groupMap = new HashMap<>();
+
+        for(GroupEntry group: groupsList) {
+            groupMap.put(group.getId(), group);
+        }
+
+        listRecordGroup.setGroupEntryMap(groupMap);
+
+        return listRecordGroup;
     }
 
     private RecordListEntry loadRecords() {
