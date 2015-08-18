@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.jaitlapps.bestadvice.MainMenuLoader;
+import com.jaitlapps.bestadvice.DataLoader;
 import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.adapter.CategoryAdapter;
 import com.jaitlapps.bestadvice.domain.GroupEntry;
@@ -35,9 +35,9 @@ public class CategoryFragment extends Fragment {
 
         if(activity != null) {
 
-            MainMenuLoader mainMenuLoader = new MainMenuLoader(activity.getAssets());
+            DataLoader dataLoader = new DataLoader(activity.getAssets());
 
-            List<GroupEntry> groups = mainMenuLoader.loadCategories();
+            List<GroupEntry> groups = dataLoader.loadCategories();
 
             ExpandableListView listView = (ExpandableListView) categoryView.findViewById(R.id.listView);
 

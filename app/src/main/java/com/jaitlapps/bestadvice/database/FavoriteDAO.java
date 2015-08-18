@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.jaitlapps.bestadvice.MainMenuLoader;
+import com.jaitlapps.bestadvice.DataLoader;
 import com.jaitlapps.bestadvice.domain.RecordEntry;
 import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
 
@@ -43,8 +43,8 @@ public class FavoriteDAO {
     }
 
     public ListRecordGroup getListFavorites() {
-        MainMenuLoader mainMenuLoader = new MainMenuLoader(context.getAssets());
-        ListRecordGroup listRecordGroup = mainMenuLoader.loadListRecords();
+        DataLoader dataLoader = new DataLoader(context.getAssets());
+        ListRecordGroup listRecordGroup = dataLoader.loadListRecords();
 
         List<RecordEntry> entryList = listRecordGroup.getRecordEntryList();
 
@@ -52,7 +52,7 @@ public class FavoriteDAO {
 
 
         String sortOrder =
-                BestAdviceContract.FavoriteContract.COLUMN_NAME_RECORD_ID  + " DESC";
+                BestAdviceContract.FavoriteContract._ID  + " DESC";
 
         Cursor c = readableDatabase.query(
                 BestAdviceContract.FavoriteContract.TABLE_NAME,  // The table to query

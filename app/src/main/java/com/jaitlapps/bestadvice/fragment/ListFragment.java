@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.jaitlapps.bestadvice.MainMenuLoader;
+import com.jaitlapps.bestadvice.DataLoader;
 import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.adapter.ListAdapter;
 import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
@@ -32,8 +32,8 @@ public class ListFragment extends Fragment {
 
         View listView = inflater.inflate(R.layout.fragment_list, container, false);
 
-        MainMenuLoader mainMenuLoader = new MainMenuLoader(activity.getAssets());
-        ListRecordGroup listRecordGroup = mainMenuLoader.loadListRecords();
+        DataLoader dataLoader = new DataLoader(activity.getAssets());
+        ListRecordGroup listRecordGroup = dataLoader.loadListRecords();
 
         ListView listControl = (ListView) listView.findViewById(R.id.listView);
 

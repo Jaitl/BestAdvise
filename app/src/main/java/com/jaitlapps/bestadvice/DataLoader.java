@@ -17,14 +17,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainMenuLoader {
+public class DataLoader {
     private AssetManager assetManager;
     private Gson gson = new Gson();
 
     private static RecordListEntry recordListEntry;
     private static GroupListEntry groupListEntry;
 
-    public MainMenuLoader(AssetManager assetManager) {
+    public DataLoader(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
 
@@ -65,7 +65,7 @@ public class MainMenuLoader {
         return listRecordGroup;
     }
 
-    private RecordListEntry loadRecords() {
+    private synchronized RecordListEntry loadRecords() {
 
         if(recordListEntry == null) {
             String jsonRecords = loadJsonDataFromFile("record");
@@ -75,7 +75,7 @@ public class MainMenuLoader {
         return recordListEntry;
     }
 
-    private GroupListEntry loadGroups() {
+    private synchronized GroupListEntry loadGroups() {
 
         if(groupListEntry == null) {
             String jsonGroups = loadJsonDataFromFile("group");
