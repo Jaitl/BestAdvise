@@ -56,7 +56,7 @@ public class DisplayContentActivity extends BaseAdActivity {
 
         web.loadDataWithBaseURL(null, html, mime, encoding, null);
 
-        saveStatistic(recordEntry);
+        saveDisplayStatistic(recordEntry);
 
         if (recordEntry.getTitle() != null && recordEntry.getTitle().length() > 0) {
             actionBar.setTitle(recordEntry.getTitle());
@@ -138,6 +138,7 @@ public class DisplayContentActivity extends BaseAdActivity {
                 item.setIcon(R.drawable.ic_favorites_enable);
                 isFavorite = true;
                 favoriteManager.addRecord(currentRecord);
+                saveFavoriteStatistic(currentRecord);
             }
 
             return true;
@@ -147,13 +148,19 @@ public class DisplayContentActivity extends BaseAdActivity {
         return true;
     }
 
-    private void saveStatistic(RecordEntry recordEntry) {
+    private void saveDisplayStatistic(RecordEntry recordEntry) {
+        saveStatistic(recordEntry, "display-article");
+    }
+
+    private void saveFavoriteStatistic(RecordEntry recordEntry) {
+        saveStatistic(recordEntry, "favorite-article");
+    }
+
+    private void saveStatistic(RecordEntry recordEntry, String category) {
         GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
         Tracker analyticsTracker = analytics.newTracker(R.xml.global_tracker);
 
         analyticsTracker.send(new HitBuilders.EventBuilder()
-                .setCategory("display-article").setAction(recordEntry.getTitle()).build());
+                .setCategory(category).setAction(recordEntry.getTitle()).build());
     }
-
-
 }

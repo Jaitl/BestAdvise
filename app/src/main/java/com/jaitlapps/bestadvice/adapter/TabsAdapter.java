@@ -1,6 +1,7 @@
 package com.jaitlapps.bestadvice.adapter;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -18,11 +19,19 @@ import java.util.Map;
 
 public class TabsAdapter extends FragmentStatePagerAdapter {
     private List<Map.Entry<String, Fragment>> tabEntries;
-    private Activity activity;
 
-
-    public TabsAdapter(FragmentManager fm, Activity activity) {
+    public TabsAdapter(FragmentManager fm, final Activity  activity) {
         super(fm);
+
+        AsyncTask loadFavorites = new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] params) {
+                FavoriteManager.getInstance().createDAO(activity);
+                return null;
+            }
+        };
+
+        loadFavorites.execute();
 
         CategoryFragment categoryFragment = new CategoryFragment();
         categoryFragment.setActivity(activity);
@@ -32,8 +41,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
 
         FavoriteFragment favoriteFragment = new FavoriteFragment();
         favoriteFragment.setActivity(activity);
-
-        FavoriteManager.getInstance().createDAO(activity);
 
         tabEntries = new ArrayList<>();
 
@@ -45,8 +52,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
 
         tabEntries.add(new AbstractMap.SimpleEntry<String, Fragment>(activity.getResources().getString(R.string.favorite_name),
                 favoriteFragment));
-
-        this.activity = activity;
     }
 
     @Override

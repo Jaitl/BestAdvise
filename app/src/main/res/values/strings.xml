@@ -14,7 +14,7 @@
     <string name="hello_world">Hello world!</string>
     
     <string name="category_name">Категории</string>
-    <string name="list_name">Новые</string>
+    <string name="list_name">Список</string>
     <string name="favorite_name">Избранное</string>
 
 <!-- TODO: Remove or change this placeholder text -->

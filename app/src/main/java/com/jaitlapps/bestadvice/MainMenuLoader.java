@@ -12,6 +12,7 @@ import com.jaitlapps.bestadvice.domain.list.RecordListEntry;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,9 @@ import java.util.List;
 public class MainMenuLoader {
     private AssetManager assetManager;
     private Gson gson = new Gson();
+
+    private static RecordListEntry recordListEntry;
+    private static GroupListEntry groupListEntry;
 
     public MainMenuLoader(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -43,6 +47,8 @@ public class MainMenuLoader {
         List<GroupEntry> groupsList = loadGroups().getList();
         List<RecordEntry> recordsList = loadRecords().getList();
 
+        recordsList = new ArrayList<>(recordsList);
+
         Collections.reverse(recordsList);
 
         ListRecordGroup listRecordGroup = new ListRecordGroup();
@@ -60,18 +66,21 @@ public class MainMenuLoader {
     }
 
     private RecordListEntry loadRecords() {
-        String jsonRecords = loadJsonDataFromFile("record");
 
-        gson = new Gson();
-        RecordListEntry recordListEntry = gson.fromJson(jsonRecords, RecordListEntry.class);
+        if(recordListEntry == null) {
+            String jsonRecords = loadJsonDataFromFile("record");
+            recordListEntry = gson.fromJson(jsonRecords, RecordListEntry.class);
+        }
 
         return recordListEntry;
     }
 
     private GroupListEntry loadGroups() {
-        String jsonGroups = loadJsonDataFromFile("group");
 
-        GroupListEntry groupListEntry = gson.fromJson(jsonGroups, GroupListEntry.class);
+        if(groupListEntry == null) {
+            String jsonGroups = loadJsonDataFromFile("group");
+            groupListEntry = gson.fromJson(jsonGroups, GroupListEntry.class);
+        }
 
         return groupListEntry;
     }
