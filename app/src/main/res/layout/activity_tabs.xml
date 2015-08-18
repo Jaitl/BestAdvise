@@ -14,21 +14,22 @@ tools:context="com.jaitlapps.bestadvice.activity.TabsActivity">
     android:layout_above="@+id/adView"
     android:orientation="vertical">
 
+    <io.karim.MaterialTabs
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/actionBarBackround"
+        ads:mtTextColorSelected="#FFF"
+        ads:mtIndicatorColor="#ff0b760c"
+        android:textColor="#ffa3cdaf"
+        ads:mtSameWeightTabs="true"
+        ads:mtPaddingMiddle="false" />
+
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
+        android:layout_below="@id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v4.view.PagerTabStrip
-            android:id="@+id/pager_tab_strip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="#ff86e5af"
-            android:textColor="#ff000000"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent" />
 </RelativeLayout>
 
 <com.google.android.gms.ads.AdView

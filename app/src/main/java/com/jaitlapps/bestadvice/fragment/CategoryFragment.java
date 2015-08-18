@@ -1,7 +1,6 @@
 package com.jaitlapps.bestadvice.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,11 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.jaitlapps.bestadvice.adapter.CategoryAdapter;
 import com.jaitlapps.bestadvice.MainMenuLoader;
 import com.jaitlapps.bestadvice.R;
+import com.jaitlapps.bestadvice.adapter.CategoryAdapter;
 import com.jaitlapps.bestadvice.domain.GroupEntry;
-import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
 
 import java.util.List;
 

@@ -13,8 +13,6 @@ import com.jaitlapps.bestadvice.adapter.ListAdapter;
 import com.jaitlapps.bestadvice.database.FavoriteManager;
 import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
 
-import java.io.Console;
-
 public class FavoriteFragment extends Fragment {
 
     private Activity activity;

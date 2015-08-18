@@ -3,9 +3,9 @@
     <!-- the theme applied to the application or activity -->
     <style name="BestAdviceTheme"
         parent="Theme.AppCompat.Light.DarkActionBar">
-
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar1</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <!-- ActionBar styles -->
@@ -13,5 +13,6 @@
         parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <!-- Support library compatibility -->
         <item name="background">@color/actionBarBackround</item>
+        <item name="elevation">0dp</item>
     </style>
 </resources>

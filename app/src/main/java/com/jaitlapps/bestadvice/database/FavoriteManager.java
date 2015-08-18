@@ -6,7 +6,6 @@ import android.widget.BaseAdapter;
 import com.jaitlapps.bestadvice.domain.RecordEntry;
 import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteManager {

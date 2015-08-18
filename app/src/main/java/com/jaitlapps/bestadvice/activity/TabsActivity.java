@@ -11,6 +11,8 @@ import com.google.android.gms.analytics.Tracker;
 import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.adapter.TabsAdapter;
 
+import io.karim.MaterialTabs;
+
 public class TabsActivity extends BaseAdActivity {
     TabsAdapter tabsAdapter;
     ViewPager mViewPager;
@@ -35,6 +37,9 @@ public class TabsActivity extends BaseAdActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(tabsAdapter);
+
+        MaterialTabs tabs = (MaterialTabs) findViewById(R.id.tabs);
+        tabs.setViewPager(mViewPager);
 
         displayAd();
     }

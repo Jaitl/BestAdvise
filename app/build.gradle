@@ -30,4 +30,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.0'
     compile 'com.android.support:support-v4:22.2.1'
+    compile 'io.karim:materialtabs:2.0.2'
 }
