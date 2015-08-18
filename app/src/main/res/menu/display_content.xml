@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.jaitlapps.bestadvice.activity.DisplayContentActivity" >
 
+    <item android:id="@+id/action_favorites"
+        android:icon="@drawable/ic_favorites_disable"
+        android:title="@string/favorite_name"
+        app:showAsAction="ifRoom" />
+
     <item android:id="@+id/action_settings"
         android:icon="@drawable/ic_action_settings"
         android:title="@string/action_settings"
