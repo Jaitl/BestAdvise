@@ -20,4 +20,8 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="empty_favorite_text">
+        На данный момент у вас нет избранных советов.
+        Для добавления совета в изрбранное, при просмотре совета нажмите на \u2606.</string>
+
 </resources>

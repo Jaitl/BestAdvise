@@ -14,7 +14,7 @@ import com.jaitlapps.bestadvice.adapter.ListAdapter;
 import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
 
 
-public class ListFragment extends Fragment {
+public class ListFragment extends android.support.v4.app.ListFragment {
 
     private Activity activity;
 
@@ -27,20 +27,14 @@ public class ListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View listView = inflater.inflate(R.layout.fragment_list, container, false);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
         DataLoader dataLoader = new DataLoader(activity.getAssets());
         ListRecordGroup listRecordGroup = dataLoader.loadListRecords();
 
-        ListView listControl = (ListView) listView.findViewById(R.id.listView);
-
         ListAdapter listAdapter = new ListAdapter(activity, listRecordGroup);
 
-        listControl.setAdapter(listAdapter);
-
-        return listView;
+        setListAdapter(listAdapter);
     }
 }
