@@ -1,6 +1,5 @@
 package com.jaitlapps.bestadvice.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,14 +15,9 @@ import com.jaitlapps.bestadvice.domain.GroupEntry;
 import java.util.List;
 
 public class CategoryFragment extends Fragment {
-    private Activity activity;
 
     public CategoryFragment() {
 
-    }
-
-    public void setActivity(Activity activity) {
-        this.activity = activity;
     }
 
     @Override
@@ -33,18 +27,16 @@ public class CategoryFragment extends Fragment {
 
         View categoryView = inflater.inflate(R.layout.fragment_category, container, false);
 
-        if(activity != null) {
+        DataLoader dataLoader = new DataLoader(getActivity().getAssets());
 
-            DataLoader dataLoader = new DataLoader(activity.getAssets());
+        List<GroupEntry> groups = dataLoader.loadCategories();
 
-            List<GroupEntry> groups = dataLoader.loadCategories();
+        ExpandableListView listView = (ExpandableListView) categoryView.findViewById(R.id.listView);
 
-            ExpandableListView listView = (ExpandableListView) categoryView.findViewById(R.id.listView);
+        CategoryAdapter adapter = new CategoryAdapter(getActivity(), groups);
 
-            CategoryAdapter adapter = new CategoryAdapter(activity, groups);
+        listView.setAdapter(adapter);
 
-            listView.setAdapter(adapter);
-        }
         return categoryView;
     }
 

@@ -21,9 +21,6 @@ public class DataLoader {
     private AssetManager assetManager;
     private Gson gson = new Gson();
 
-    private static RecordListEntry recordListEntry;
-    private static GroupListEntry groupListEntry;
-
     public DataLoader(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
@@ -67,22 +64,14 @@ public class DataLoader {
 
     private synchronized RecordListEntry loadRecords() {
 
-        if(recordListEntry == null) {
-            String jsonRecords = loadJsonDataFromFile("record");
-            recordListEntry = gson.fromJson(jsonRecords, RecordListEntry.class);
-        }
-
-        return recordListEntry;
+        String jsonRecords = loadJsonDataFromFile("record");
+        return gson.fromJson(jsonRecords, RecordListEntry.class);
     }
 
     private synchronized GroupListEntry loadGroups() {
 
-        if(groupListEntry == null) {
-            String jsonGroups = loadJsonDataFromFile("group");
-            groupListEntry = gson.fromJson(jsonGroups, GroupListEntry.class);
-        }
-
-        return groupListEntry;
+        String jsonGroups = loadJsonDataFromFile("group");
+        return gson.fromJson(jsonGroups, GroupListEntry.class);
     }
 
     private String loadJsonDataFromFile(String name) {
