@@ -1,7 +1,18 @@
 package com.jaitlapps.bestadvice;
 
-/**
- * Created by jaitl on 20.08.15.
- */
-public class BestAdviceApplication {
+import android.app.Application;
+
+public class BestAdviceApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        // begin add
+        try {
+            Class.forName("android.os.AsyncTask");
+        } catch(Throwable ignore) {
+        }
+        // end add
+
+        super.onCreate();
+    }
 }
