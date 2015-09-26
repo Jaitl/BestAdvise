@@ -23,16 +23,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     public TabsAdapter(FragmentManager fm, final Activity  activity) {
         super(fm);
 
-        AsyncTask loadFavorites = new AsyncTask() {
-            @Override
-            protected Object doInBackground(Object[] params) {
-                FavoriteManager.getInstance().createDAO(activity);
-                return null;
-            }
-        };
-
-        loadFavorites.execute();
-
         CategoryFragment categoryFragment = new CategoryFragment();
 
         ListFragment listFragment = new ListFragment();

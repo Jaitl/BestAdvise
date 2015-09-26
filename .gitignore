@@ -13,6 +13,7 @@ manifest-merger-release-report.txt
 bin/
 gen/
 gradle/
+captures/
 
 # Local configuration file (sdk path, etc)
 local.properties

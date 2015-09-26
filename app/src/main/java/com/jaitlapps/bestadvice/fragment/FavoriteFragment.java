@@ -17,10 +17,9 @@ public class FavoriteFragment extends android.support.v4.app.ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ListRecordGroup listRecordGroup = FavoriteManager.getInstance().getList();
+        ListRecordGroup listRecordGroup = FavoriteManager.getInstance(getActivity()).getList();
 
         ListAdapter adapter = new ListAdapter(getActivity(), listRecordGroup);
-        FavoriteManager.getInstance().setAdapter(adapter);
 
         setListAdapter(adapter);
     }
@@ -30,5 +29,12 @@ public class FavoriteFragment extends android.support.v4.app.ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         setEmptyText((getActivity().getResources().getString(R.string.empty_favorite_text)));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ((ListAdapter)getListAdapter()).notifyDataSetChanged();
     }
 }

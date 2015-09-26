@@ -9,33 +9,31 @@ import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
 import java.util.List;
 
 public class FavoriteManager {
-    private static final FavoriteManager instance = new FavoriteManager();
+    private static FavoriteManager instance;
     private List<RecordEntry> recordEntries;
-    private BaseAdapter adapter;
     private FavoriteDAO dao;
 
     private ListRecordGroup listRecordGroup;
 
-    private FavoriteManager() {
-
-    }
-
-    public void createDAO(Context context) {
+    private FavoriteManager(Context context) {
         dao = new FavoriteDAO(context);
         listRecordGroup = dao.getListFavorites();
 
         recordEntries = listRecordGroup.getRecordEntryList();
     }
 
-    public static FavoriteManager getInstance() {
+
+    public synchronized static FavoriteManager getInstance(Context context) {
+        if(instance == null) {
+            instance = new FavoriteManager(context);
+        }
+
         return instance;
     }
 
     public void addRecord(RecordEntry recordEntry) {
         recordEntries.add(0, recordEntry);
         dao.addToFavorite(recordEntry);
-
-        updateList();
     }
 
     public void deleteRecord(RecordEntry recordEntry) {
@@ -53,8 +51,6 @@ public class FavoriteManager {
             recordEntries.remove(findRecord);
 
         dao.deleteFromFavorite(recordEntry);
-
-        updateList();
     }
 
     public boolean isFavorite(RecordEntry recordEntry) {
@@ -66,16 +62,8 @@ public class FavoriteManager {
         return false;
     }
 
-    public void setAdapter(BaseAdapter adapter) {
-        this.adapter = adapter;
-    }
-
     public ListRecordGroup getList() {
         return listRecordGroup;
     }
 
-    private void updateList() {
-        if(adapter != null)
-            adapter.notifyDataSetChanged();
-    }
 }

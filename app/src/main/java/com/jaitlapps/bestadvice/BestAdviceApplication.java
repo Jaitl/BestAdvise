@@ -2,6 +2,8 @@ package com.jaitlapps.bestadvice;
 
 import android.app.Application;
 
+import com.jaitlapps.bestadvice.database.FavoriteManager;
+
 public class BestAdviceApplication extends Application {
 
     @Override
@@ -12,6 +14,8 @@ public class BestAdviceApplication extends Application {
         } catch(Throwable ignore) {
         }
         // end add
+
+        FavoriteManager.getInstance(this);
 
         super.onCreate();
     }

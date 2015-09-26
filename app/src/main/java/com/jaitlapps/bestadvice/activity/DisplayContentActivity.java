@@ -27,7 +27,6 @@ public class DisplayContentActivity extends BaseAdActivity {
 
     private RecordEntry currentRecord;
     private Boolean isFavorite = false;
-    private FavoriteManager favoriteManager = FavoriteManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +108,8 @@ public class DisplayContentActivity extends BaseAdActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.display_content, menu);
 
+        FavoriteManager favoriteManager = FavoriteManager.getInstance(this);
+
         if(currentRecord != null) {
             if(favoriteManager.isFavorite(currentRecord)) {
                 isFavorite = true;
@@ -124,6 +125,9 @@ public class DisplayContentActivity extends BaseAdActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        FavoriteManager favoriteManager = FavoriteManager.getInstance(this);
+
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             startActivity(new Intent(this, PreferenceActivity.class));
