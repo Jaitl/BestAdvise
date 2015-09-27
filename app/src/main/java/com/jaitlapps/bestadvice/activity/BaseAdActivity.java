@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.jaitlapps.bestadvice.BuildConfig;
 import com.jaitlapps.bestadvice.R;
 
 public class BaseAdActivity extends ActionBarActivity {
@@ -16,8 +17,15 @@ public class BaseAdActivity extends ActionBarActivity {
     protected AdView mAdView;
 
     protected void displayAd() {
+
         mAdView = (AdView) findViewById(R.id.adView);
-        mAdView.loadAd(new AdRequest.Builder().build());
+
+        if(isFree()) {
+            mAdView.loadAd(new AdRequest.Builder().build());
+        } else {
+            mAdView.setVisibility(View.GONE);
+            mAdView = null;
+        }
     }
 
     @Override
@@ -86,5 +94,9 @@ public class BaseAdActivity extends ActionBarActivity {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    protected boolean isFree() {
+        return BuildConfig.FLAVOR == "free";
     }
 }

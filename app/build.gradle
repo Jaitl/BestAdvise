@@ -4,6 +4,15 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+    productFlavors {
+        free {
+            applicationId =  "com.jaitlapps.bestadvice"
+        }
+        pro {
+            applicationId =  "com.jaitlapps.bestadvice.pro"
+        }
+    }
+
     defaultConfig {
         applicationId "com.jaitlapps.bestadvice"
         minSdkVersion 9
