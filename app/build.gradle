@@ -7,9 +7,11 @@ android {
     productFlavors {
         free {
             applicationId =  "com.jaitlapps.bestadvice"
+            resValue "string", "app_name", "Полезные советы"
         }
         pro {
             applicationId =  "com.jaitlapps.bestadvice.pro"
+            resValue "string", "app_name", "Полезные советы Pro"
         }
     }
 

@@ -2,6 +2,8 @@
 *.apk
 *.ap_
 manifest-merger-release-report.txt
+manifest-merger-free-release-report.txt
+manifest-merger-pro-release-report.txt
 
 # files for the dex VM
 *.dex
