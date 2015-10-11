@@ -10,6 +10,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.adapter.TabsAdapter;
+import com.jaitlapps.bestadvice.fragment.AdProVersionFragment;
 
 import io.karim.MaterialTabs;
 
@@ -43,6 +44,19 @@ public class TabsActivity extends BaseAdActivity {
         tabs.setViewPager(mViewPager);
 
         displayAd();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        AdProVersionFragment fragment = new AdProVersionFragment();
+        fragment.setContext(this);
+
+        if (fragment.isShow()) {
+            fragment.show(getSupportFragmentManager(), "pro");
+        }
     }
 
     @Override

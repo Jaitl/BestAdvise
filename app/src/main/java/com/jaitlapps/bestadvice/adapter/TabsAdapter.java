@@ -1,13 +1,11 @@
 package com.jaitlapps.bestadvice.adapter;
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.jaitlapps.bestadvice.R;
-import com.jaitlapps.bestadvice.database.FavoriteManager;
 import com.jaitlapps.bestadvice.fragment.CategoryFragment;
 import com.jaitlapps.bestadvice.fragment.FavoriteFragment;
 import com.jaitlapps.bestadvice.fragment.ListFragment;

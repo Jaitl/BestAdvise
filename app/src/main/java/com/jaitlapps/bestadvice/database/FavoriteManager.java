@@ -1,7 +1,6 @@
 package com.jaitlapps.bestadvice.database;
 
 import android.content.Context;
-import android.widget.BaseAdapter;
 
 import com.jaitlapps.bestadvice.domain.RecordEntry;
 import com.jaitlapps.bestadvice.domain.list.ListRecordGroup;
