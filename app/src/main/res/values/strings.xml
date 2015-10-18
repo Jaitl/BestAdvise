@@ -22,5 +22,6 @@
     <string name="empty_favorite_text">
         На данный момент у вас нет избранных советов.
         Для добавления совета в избранное, при просмотре совета нажмите на \u2606.</string>
+    <string name="title_activity_image_display">Просмотор изображения</string>
 
 </resources>

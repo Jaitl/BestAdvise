@@ -1,6 +1,6 @@
 package com.jaitlapps.bestadvice.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
@@ -9,7 +9,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.jaitlapps.bestadvice.BestAdviceApplication;
 import com.jaitlapps.bestadvice.R;
 
-public class BaseAdActivity extends AppCompatActivity {
+public class BaseAdActivity extends ActionBarActivity {
 
     protected AdView mAdView;
 

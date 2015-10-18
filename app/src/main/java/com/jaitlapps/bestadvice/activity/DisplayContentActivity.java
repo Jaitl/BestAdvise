@@ -1,5 +1,6 @@
 package com.jaitlapps.bestadvice.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -39,6 +41,7 @@ public class DisplayContentActivity extends BaseAdActivity {
         Intent intent = getIntent();
 
         WebView web = (WebView) findViewById(R.id.webview);
+        addImageClickHandler(web);
 
         String jsonRecord = intent.getStringExtra(TabsActivity.JSON_RECORDENTRY);
         Gson gson = new Gson();
@@ -84,6 +87,22 @@ public class DisplayContentActivity extends BaseAdActivity {
         }
 
         return content;
+    }
+
+    private void addImageClickHandler(WebView wv) {
+        WebSettings ws = wv.getSettings();
+        ws.setJavaScriptEnabled(true);
+        final Context context = this;
+        wv.addJavascriptInterface(new Object()
+        {
+            @JavascriptInterface
+            public void openImage(String url)
+            {
+                Intent imageIntent = new Intent(context, ImageDisplayActivity.class);
+                imageIntent.putExtra(ImageDisplayActivity.PATH_TO_IMAGE, url);
+                startActivity(imageIntent);
+            }
+        }, "img");
     }
 
     @Override

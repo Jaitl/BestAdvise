@@ -6,11 +6,11 @@ android {
 
     productFlavors {
         free {
-            applicationId =  "com.jaitlapps.bestadvice"
+            applicationId = "com.jaitlapps.bestadvice"
             resValue "string", "app_name", "Полезные советы"
         }
         pro {
-            applicationId =  "com.jaitlapps.bestadvice.pro"
+            applicationId = "com.jaitlapps.bestadvice.pro"
             resValue "string", "app_name", "Полезные советы Pro"
         }
     }
@@ -42,4 +42,6 @@ dependencies {
     compile 'org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.0'
     compile 'com.android.support:support-v4:23.0.1'
     compile 'io.karim:materialtabs:2.0.2'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.commit451:PhotoView:1.2.4'
 }

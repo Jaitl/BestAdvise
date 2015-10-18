@@ -25,8 +25,13 @@ public class ContentRender {
         }
 
         html = processHTML(html);
+        html = addImageClickHandler(html);
 
         return html;
+    }
+
+    private String addImageClickHandler(String html) {
+        return html.replace("<img", "<img onclick=\"img.openImage(this.src);\"");
     }
 
     private String updateLinkToImages(String content) {
