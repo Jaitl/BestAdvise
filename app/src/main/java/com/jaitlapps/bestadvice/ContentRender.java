@@ -31,7 +31,9 @@ public class ContentRender {
     }
 
     private String addImageClickHandler(String html) {
-        return html.replace("<img", "<img onclick=\"img.openImage(this.src);\"");
+        return html
+                .replace("<img", "<img onclick=\"img.openImage(this.nextSibling.nextSibling.src);\" class=\"img_zoom\" src=\"" + getLinkToZoomPng() +
+                        "\" /><br /><img class=\"img_border\" onclick=\"img.openImage(this.src);\"");
     }
 
     private String updateLinkToImages(String content) {
@@ -92,7 +94,11 @@ public class ContentRender {
     }
 
     private String getLinkToCSS() {
-        return "file:///android_asset/bestadvice/content/css/common_style.css";
+        return "file:///android_asset/default/css/common_style.css";
+    }
+
+    private String getLinkToZoomPng() {
+        return "file:///android_asset/default/ico/zoom.png";
     }
 
     private String getLinkToImages() {
