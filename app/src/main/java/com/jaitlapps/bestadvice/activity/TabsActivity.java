@@ -7,9 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.jaitlapps.bestadvice.BestAdviceApplication;
 import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.adapter.TabsAdapter;
+import com.jaitlapps.bestadvice.domain.RecordEntry;
 import com.jaitlapps.bestadvice.fragment.AdProVersionFragment;
 
 import io.karim.MaterialTabs;
@@ -32,6 +35,7 @@ public class TabsActivity extends BaseAdActivity {
 
         setContentView(R.layout.activity_tabs);
         enablingAdvertisingFeatures();
+        saveStatisticVersion();
 
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
@@ -77,5 +81,16 @@ public class TabsActivity extends BaseAdActivity {
         GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
         Tracker analyticsTracker = analytics.newTracker(R.xml.global_tracker);
         analyticsTracker.enableAdvertisingIdCollection(true);
+    }
+
+    private void saveStatisticVersion() {
+        String version = String.format("app: %s, sdk: %s",
+                BestAdviceApplication.getVersionApp(this), BestAdviceApplication.getVersionSdk());
+
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker analyticsTracker = analytics.newTracker(R.xml.global_tracker);
+
+        analyticsTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("version-app").setAction(version).build());
     }
 }

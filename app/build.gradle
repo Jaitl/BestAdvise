@@ -8,19 +8,20 @@ android {
         free {
             applicationId = "com.jaitlapps.bestadvice"
             resValue "string", "app_name", "Полезные советы"
+            minSdkVersion 9
         }
         pro {
             applicationId = "com.jaitlapps.bestadvice.pro"
             resValue "string", "app_name", "Полезные советы Pro"
+            minSdkVersion 15
         }
     }
 
     defaultConfig {
         applicationId "com.jaitlapps.bestadvice"
-        minSdkVersion 9
         targetSdkVersion 23
-        versionCode 11
-        versionName "2.0.1"
+        versionCode 12
+        versionName "2.1.0"
     }
     buildTypes {
         release {

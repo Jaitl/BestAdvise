@@ -65,7 +65,7 @@ public class AdProVersionFragment extends DialogFragment {
     }
 
     public boolean isShow() {
-        if (BestAdviceApplication.isFree()) {
+        if (BestAdviceApplication.isFree() && BestAdviceApplication.getVersionSdk() > 14) {
             if(isAllowed()) {
                 if (isDateOccurred()) {
                     return BestAdviceApplication.isNetworkConnected(context);

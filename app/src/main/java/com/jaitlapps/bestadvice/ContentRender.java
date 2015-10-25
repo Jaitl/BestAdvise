@@ -25,7 +25,10 @@ public class ContentRender {
         }
 
         html = processHTML(html);
-        html = addImageClickHandler(html);
+
+        if (BestAdviceApplication.getVersionSdk() > 14) {
+            html = addImageClickHandler(html);
+        }
 
         return html;
     }

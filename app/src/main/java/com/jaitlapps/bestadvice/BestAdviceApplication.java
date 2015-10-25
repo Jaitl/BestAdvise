@@ -2,6 +2,8 @@ package com.jaitlapps.bestadvice;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -38,5 +40,20 @@ public class BestAdviceApplication extends Application {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static int getVersionSdk() {
+        return android.os.Build.VERSION.SDK_INT;
+    }
+
+    public static String getVersionApp(Context context) {
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            return pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+
+        }
+
+        return "";
     }
 }

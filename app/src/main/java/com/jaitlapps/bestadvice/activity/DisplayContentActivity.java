@@ -16,6 +16,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
+import com.jaitlapps.bestadvice.BestAdviceApplication;
 import com.jaitlapps.bestadvice.ContentRender;
 import com.jaitlapps.bestadvice.R;
 import com.jaitlapps.bestadvice.database.FavoriteManager;
@@ -41,7 +42,10 @@ public class DisplayContentActivity extends BaseAdActivity {
         Intent intent = getIntent();
 
         WebView web = (WebView) findViewById(R.id.webview);
-        addImageClickHandler(web);
+
+        if (BestAdviceApplication.getVersionSdk() > 14) {
+            addImageClickHandler(web);
+        }
 
         String jsonRecord = intent.getStringExtra(TabsActivity.JSON_RECORDENTRY);
         Gson gson = new Gson();
