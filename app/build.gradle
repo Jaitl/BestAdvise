@@ -1,25 +1,27 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 26
+
+    flavorDimensions "price"
 
     productFlavors {
         free {
             applicationId = "com.jaitlapps.bestadvice"
             resValue "string", "app_name", "Полезные советы"
-            minSdkVersion 9
+            dimension "price"
         }
         pro {
             applicationId = "com.jaitlapps.bestadvice.pro"
             resValue "string", "app_name", "Полезные советы Pro"
-            minSdkVersion 15
+            dimension "price"
         }
     }
 
     defaultConfig {
         applicationId "com.jaitlapps.bestadvice"
-        targetSdkVersion 23
+        minSdkVersion 15
+        targetSdkVersion 26
         versionCode 12
         versionName "2.1.0"
     }
@@ -29,20 +31,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
-repositories {
-    mavenCentral()
-}
+def supportVersion = '26.1.0'
+def playServiceVersion = '11.8.0'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.google.android.gms:play-services:8.1.0'
-    compile 'com.google.code.gson:gson:2.3.1'
-    compile 'org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.0'
-    compile 'com.android.support:support-v4:23.0.1'
-    compile 'io.karim:materialtabs:2.0.2'
-    compile 'com.android.support:design:23.0.1'
-    compile 'com.commit451:PhotoView:1.2.4'
+    compile "com.android.support:appcompat-v7:${supportVersion}"
+    compile "com.android.support:design:${supportVersion}"
+    compile "com.google.android.gms:play-services-analytics:${playServiceVersion}"
+    compile "com.google.android.gms:play-services-ads:${playServiceVersion}"
+    compile "com.google.code.gson:gson:2.3.1"
+    compile "org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.0"
+    compile "io.karim:materialtabs:2.0.2"
+    compile "com.commit451:PhotoView:1.2.4"
 }
