@@ -46,3 +46,8 @@ app/build
 
 # Content
 **/assets/bestadvice
+
+# Build
+app/pro/
+app/free/
+
